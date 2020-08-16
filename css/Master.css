@@ -1,0 +1,55 @@
+﻿html, body {
+	height: 100%;
+}
+
+.h-70 {
+	height: 70%;
+}
+
+.carousel-img {
+	background-position: top;
+	background-size: cover;
+	min-height: 100%;
+}
+
+.h-200 {
+	height:200px;
+}
+
+.h-300 {
+	height: 300px;
+}
+
+.h-400 {
+	height: 400px;
+}
+
+.h-500 {
+	height: 500px;
+}
+
+
+/*layout*/
+.absolute {
+	position: absolute;
+}
+
+.relative {
+	position: relative;
+}
+
+.l-50 {
+	left: 50%;
+}
+.l-25 {
+	left: 25%;
+}
+
+.l-f50 {
+	left:-50%;
+}
+
+.l-f25 {
+	left: -25%;
+}
+
