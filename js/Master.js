@@ -11,3 +11,4 @@ function test() {
 }
 
 $('.ui.dropdown').dropdown();
+

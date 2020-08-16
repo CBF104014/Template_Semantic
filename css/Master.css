@@ -53,3 +53,22 @@
 	left: -25%;
 }
 
+.bg-no {
+	background-color: white !important;
+}
+
+.br-no {
+	border: none !important;
+}
+
+.islink {
+	cursor:pointer;
+}
+
+.bs-no {
+	box-shadow: none !important;
+}
+
+.f-16 {
+	font-size: 1.6rem !important;
+}
