@@ -1,0 +1,89 @@
+﻿
+<div class="h-200 bg-dark">
+
+</div>
+<p></p>
+<div class="container">
+	<br />
+	<div class="ui steps w-100">
+		<a class="step">
+			<div class="content">
+				<div class="title">Step1</div>
+				<div class="description">CART DETAIL</div>
+			</div>
+		</a>
+		<a class="active step">
+			<div class="content">
+				<div class="title">Step2</div>
+				<div class="description">
+					SHIPPING METHOD
+				</div>
+			</div>
+		</a>
+		<a class="active step">
+			<div class="content">
+				<div class="title">Step2</div>
+				<div class="description">
+					Checkout
+				</div>
+			</div>
+		</a>
+	</div>
+	<br /><br />
+	<div>
+		<table id="example" class="ui celled table" style="width:100%">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>image</th>
+					<th>Name</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Subtotal</th>
+					<th>-</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	
+
+	<br />
+	<div class="form-row justify-content-end">
+		<div class="ui right action input">
+			<button class="ui teal labeled icon button">
+				<i class="cart icon"></i>
+				<span>$1800&nbsp;</span> 
+				Checkout
+			</button>
+		</div>
+	</div>
+	
+</div>
+
+<script>
+	var data = [["1", "img-1.jpg", "Yellow-Tshit",1,590,590,""], ["2", "img-2.jpg","White-Tshit",1,1400 ,1400,""]];
+
+	var table = $('#example').DataTable({
+		data: data,
+		columnDefs: [
+			{
+				targets: 1,
+				render: function (data) {
+					return `<img class="ui small image" src="images/${data}">`
+				}
+			},{
+				targets: 3,
+				render: function (data) {
+					return `<div class="ui input"><input type="number" min="1" id="amount" value="${data}"  style="width:50px;"></div>`
+				}
+			},{
+				targets: 6,
+				render: function () {
+					return '<i class="trash alternate outline icon islink"></i>'
+				}
+			}
+		]
+	});
+</script>
