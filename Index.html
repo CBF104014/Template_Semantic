@@ -8,6 +8,7 @@
 	<link href="css/semantic.min.css" rel="stylesheet" />
 	<link href="css/Master.css" rel="stylesheet" />
 	<link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+	<script src="js/lan.js"></script>
 </head>
 <body>
 	<header id="header">
@@ -15,12 +16,25 @@
 			<a class="item" name="HomePage.html" onclick="Loader(this.name);">
 				<i class="pushed icon"></i>
 			</a>
-			<a class="item" name="Shop.html" onclick="Loader(this.name);">Shop</a>
-			<a class="item" name="Cart.html" onclick="Loader(this.name);">Cart</a>
-			<a class="item" href="Login.html">Sign-in</a>
-			<a class="item">
-				<i class="world icon"></i>
+			<a class="item" data-bind="i18n:'Shop', click:()=>{ loa('Shop'); }" >Shop</a>
+			<a class="item" data-bind="i18n:'Cart', click:()=>{ loa('Cart'); }" >Cart</a>
+			<a class="item" data-bind="i18n:'Login' " href="Login.html">Sign-in</a>
+			<a class="item ui dropdown">
+				<!--<i class="world icon"></i>-->
+				<span class="text"></span>
+				<div class="menu">
+					<div class="scrolling menu" data-bind="click:aaa">
+						<div class="item"><i class="myanmar flag"></i> TW </div> 
+						<div class="item"><i class="united states flag"></i> US </div>
+					</div>
+				</div>
 			</a>
+			<select class="ui dropdown item br-no" data-bind="value:language">
+				<option value="tw">中文</option>
+				<option value="en">English</option>
+			</select>
+			
+			<a class="item" href="#" data-bind="click:test">No</a>
 		</div>
 	</header>
 	<br />
@@ -31,8 +45,40 @@
 </html>
 
 <script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/knockout-3.5.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/semantic.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="js/Master.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
+
+<script>
+	var index_vm = new function () {
+		var self = this;
+		self._language = ko.observable('');
+		self.language = ko.observable('');
+		self.loa = (name) => {
+			$('#body').load(`${name}.html`);
+		}
+
+		self.aaa = (data, event) => {
+			console.log(event.target.textContent);
+		};
+	}
+
+	//滑鼠追蹤
+	//$("body").mousemove(function (e) {
+	//	console.log(e.pageX+','+e.pageY);
+	//});
+
+
+	ko.bindingHandlers.i18n = {
+		update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+			var l = index_vm.language() == '' || undefined ? 'tw' : index_vm.language();
+			element.textContent = lan[l][valueAccessor()];
+		}
+    };
+	ko.virtualElements.allowedBindings.i18n = true;
+	ko.applyBindings(index_vm, document.getElementById('header'));
+
+</script>

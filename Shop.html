@@ -3,15 +3,15 @@
 	
 </div>
 <p></p>
-<div class="container-fluid form-row">
+<div class="container-fluid form-row" id="shop">
 	<div class="col-lg-3 col-sm-12 pr-5">
 		<br />
 		<div class="form-group">
-			<div class="form-group">Catagories</div>
+			<div class="form-group" data-bind="i18n:'Catagories'">Catagories</div>
 			<div class="accordion">
 				<div class="card-header bg-no br-no" id="headingTwo">
 					<a class="justify-content-between d-flex collapsed" href="#" data-toggle="collapse" data-target="#c1" aria-expanded="false">
-						<label>Category-1</label>
+						<label data-bind="i18n:'Catagories1'">Category-1</label>
 						<i class="plus icon"></i>
 					</a>
 				</div>
@@ -75,7 +75,7 @@
 		</div>
 		<div class="col-lg-3 col-6">
 			<div class="ui card bs-no">
-				<div class="image transition hidden">
+				<div class="image transition hidden myani">
 					<div class="ui dimmer content center">
 						<div class="ui inverted button">ADD TO CART</div>
 					</div>
@@ -94,7 +94,7 @@
 		</div>
 		<div class="col-lg-3 col-6">
 			<div class="ui card bs-no">
-				<div class="image transition hidden">
+				<div class="image transition hidden myani">
 					<div class="ui dimmer content center">
 						<div class="ui inverted button">ADD TO CART</div>
 					</div>
@@ -113,7 +113,7 @@
 		</div>
 		<div class="col-lg-3 col-6">
 			<div class="ui card bs-no">
-				<div class="image transition hidden">
+				<div class="image transition hidden myani">
 					<div class="ui dimmer content center">
 						<div class="ui inverted button">ADD TO CART</div>
 					</div>
@@ -132,7 +132,7 @@
 		</div>
 		<div class="col-lg-3 col-6">
 			<div class="ui card bs-no">
-				<div class="image transition hidden">
+				<div class="image transition hidden myani">
 					<div class="ui dimmer content center">
 						<div class="ui inverted button">ADD TO CART</div>
 					</div>
@@ -170,12 +170,18 @@
 		if (typeof animation == 'string') {
 			animation = animation.toLowerCase();
 		}
-		$('.transition').transition({
+		$('.myani').transition({
 			animation: animation,
 			interval: 200
 		});
 	});
 
 	$('.star.rating').rating();
-	$('.card .dimmer').dimmer({	on: 'hover'});
+	$('.card .dimmer').dimmer({ on: 'hover' });
+
+	var shop_vm = new function () {
+		var self = this;
+	}
+
+	ko.applyBindings(shop_vm,document.getElementById('shop'));
 </script>
